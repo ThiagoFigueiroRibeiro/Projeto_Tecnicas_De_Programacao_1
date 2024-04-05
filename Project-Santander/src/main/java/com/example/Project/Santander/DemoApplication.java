@@ -37,7 +37,7 @@ public class DemoApplication implements CommandLineRunner {
 		List<Produto> produtos = openCsv();
 		//produtos.forEach(System.out::println);
 		countCategorias(produtos);
-		System.out.println(valorMedio(produtos));
+		valorMedio(produtos);
 		estoqueBaixo(produtos);
 	}
 
@@ -82,7 +82,7 @@ public class DemoApplication implements CommandLineRunner {
 			}
 		});
 		System.out.println("Produtos com baixo estoque:");
-		novaLista.forEach(produto -> System.out.println(produto.getNome() +":"+ produto.getQuantidade()));
+		novaLista.forEach(produto -> System.out.println("-"+produto.getNome() +":"+ produto.getQuantidade()));
 		//System.out.println(novaLista);
 		return novaLista;
 	}
