@@ -10,6 +10,6 @@ Aplicação em Java que lê um arquivo CSV com produtos e tira informações del
 ## Como rodar o program?
 Você deve rodar o seguinte arquivo :
 ```
-Project-Santander/src/main/java/com/example/Project/Santander/DemoApplication.java
+Project-Santander/src/main/java/ProjectSantander/DemoApplication.java
 ```
 
