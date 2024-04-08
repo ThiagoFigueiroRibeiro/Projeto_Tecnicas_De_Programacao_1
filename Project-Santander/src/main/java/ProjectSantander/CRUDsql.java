@@ -1,4 +1,4 @@
-package com.example.Project.Santander;
+package ProjectSantander;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 

@@ -1,4 +1,4 @@
-package com.example.Project.Santander;
+package ProjectSantander;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
