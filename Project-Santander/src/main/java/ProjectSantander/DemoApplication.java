@@ -16,7 +16,8 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		LeitorDeCSV leitor = new LeitorDeCSV();
-		CRUDsql crud = new CRUDsql(new JdbcTemplate());
+		//CRUDsql crud = new CRUDsql(new JdbcTemplate());
+		//crud.selectProdutos();
 
 		List<Produto> produtos = leitor.openCsv();
 		leitor.countCategorias(produtos);

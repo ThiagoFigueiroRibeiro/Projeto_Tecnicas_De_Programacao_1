@@ -1,6 +1,9 @@
 package ProjectSantander;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+
+import java.util.List;
 
 public class CRUDsql {
 
@@ -14,34 +17,36 @@ public class CRUDsql {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    private void delete() {
+    void delete() {
         String sql = "delete from pessoas where id = ?";
         jdbcTemplate.update(sql, 5);
     }
 
-    private void update() {
+    void update() {
         String sql = "update pessoas set nome = ? where id = ?";
         jdbcTemplate.update(sql, "Glauber", 6);
     }
 
-    private void insert() {
-        String sql = "INSERT INTO pessoas (id, nome, idade) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, 6, "Glauber", 25);
+    void insert() {
+        String sql = "INSERT INTO produtos (id, nome, quantidade, categoria, price) VALUES (?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, 1, "Lapiz", 25, "Material Escolar", 1.30 );
     }
 
-//	private void selectPessoas() {
-//		String sql = "SELECT * FROM PESSOAS";
-//
-//		RowMapper<Pessoa> rowMapper = ((rs, rowNum) -> new Pessoa(
-//				rs.getInt("ID"),
-//				rs.getString("NOME"),
-//				rs.getInt("IDADE")
-//		));
-//
-//		List<Pessoa> listaPessoas = jdbcTemplate.query(sql, rowMapper);
-//
-//		listaPessoas.forEach(p -> {
-//			System.out.println(p.getNome());
-//		});
-//	}
+	void selectProdutos() {
+		String sql = "SELECT * FROM PRODUTOS";
+
+		RowMapper<Produto> rowMapper = ((rs, rowNum) -> new Produto(
+				rs.getInt("ID"),
+			    rs.getString("NOME"),
+				rs.getInt("QUANTIDADE"),
+                rs.getString("CATEGORIA"),
+                rs.getBigDecimal("PRICE")
+		));
+
+		List<Produto> listaProdutos = jdbcTemplate.query(sql, rowMapper);
+
+		listaProdutos.forEach(p -> {
+			System.out.println(p.getNome());
+		});
+	}
 }

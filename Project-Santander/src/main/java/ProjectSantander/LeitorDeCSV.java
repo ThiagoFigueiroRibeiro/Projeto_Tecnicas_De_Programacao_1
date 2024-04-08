@@ -6,6 +6,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import java.io.IOException;
 import java.io.Reader;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -56,9 +57,9 @@ class LeitorDeCSV {
                 .map(Produto::getPrice)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        BigDecimal resultado = media.divide(BigDecimal.valueOf(lista.size()));
+        BigDecimal resultado = media.divide(BigDecimal.valueOf(lista.size()), 2, RoundingMode.HALF_UP);
         System.out.println("O preço médio dos produtos é de " + resultado);
-        return media.divide(resultado);
+        return resultado;
     }
 
     List<Produto> estoqueBaixo(List<Produto> lista) {
